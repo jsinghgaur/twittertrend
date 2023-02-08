@@ -20,11 +20,13 @@ pipeline{
         } 
         stage("Sonar Analysis") {
             environment {
-               scannerHome = tool 'my-sonar-scanner'
+               scannerHome = tool 'MySonarScanner'
             }
             steps {
-                withSonarQubeEnv('my-sonar-qube-server') {    
+                echo '<--------------- Sonar Analysis started  --------------->'
+                withSonarQubeEnv('MySonarQubeServer') {    
                     sh "${scannerHome}/bin/sonar-scanner"
+                echo '<--------------- Sonar Analysis started  --------------->'    
                 }    
             }   
         }
