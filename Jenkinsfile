@@ -18,7 +18,7 @@ pipeline{
                 sh 'mvn clean deploy'
             }
         } 
-        stage ("Sonar Analysis") {
+        stage("Sonar Analysis") {
             environment {
                scannerHome = tool 'my-sonar-scanner'
             }
