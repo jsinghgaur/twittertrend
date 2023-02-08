@@ -26,9 +26,20 @@ pipeline{
                 echo '<--------------- Sonar Analysis started  --------------->'
                 withSonarQubeEnv('MySonarQubeServer') {    
                     sh "${scannerHome}/bin/sonar-scanner"
-                echo '<--------------- Sonar Analysis started  --------------->'    
+                echo '<--------------- Sonar Analysis ends --------------->'    
                 }    
             }   
+        }
+        stage('Quality Gate'){
+            steps{
+                script{
+                    timeout (time:1, unit:'HOURS'){
+                        def qg = waitForQualityGate()   
+                        if(qg.status !='OK'){   
+                           error "Pipeline failed due to quality gate failures: ${qg.status}"  
+                    }
+                }
+            }
         }
        
     }
