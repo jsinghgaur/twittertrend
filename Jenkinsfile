@@ -32,6 +32,7 @@ pipeline{
         }
         stage('Quality Gate'){
             steps{
+                echo '<----------------Quality Gate------------------------->'
                 script{
                     timeout (time: 1, unit: 'HOURS'){
                         def qg = waitForQualityGate()   
