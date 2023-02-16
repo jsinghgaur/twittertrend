@@ -1,5 +1,5 @@
 
-def registry = 'https://vishal25k11.jfrog.io'
+def registry = 'https://jsinghg.jfrog.io/'
 pipeline{
     agent {
         node {
@@ -56,7 +56,7 @@ pipeline{
                           "files": [
                             {
                               "pattern": "jarstaging/(*)",
-                              "target": "myttrends-libs-release-local/{1}",
+                              "target": "ttrends-libs-release-local/{1}",
                               "flat": "false",
                               "props" : "${properties}",
                               "exclusions": [ "*.sha1", "*.md5"]
