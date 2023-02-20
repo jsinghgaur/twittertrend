@@ -8,6 +8,9 @@ pipeline{
             label "java-build-server"
         }
     }
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '8', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '8')
+    }
     environment {
         PATH = "/opt/apache-maven-3.9.0/bin:$PATH"
     }
