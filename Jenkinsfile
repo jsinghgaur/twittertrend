@@ -100,10 +100,9 @@ pipeline{
         }
         stage('Deploy'){
             steps {
-                sh 'kubectl apply -f namespace.yml .'
-                sh 'kubectl apply -f secret.ymal .'
-                sh 'kubectl apply -f deployment.ymal .'
-                sh 'kubectl apply -f service.ymal .'
+                script{
+                    sh ./deploy.sh
+                }
             }
         }
     }
