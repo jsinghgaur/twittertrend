@@ -25,18 +25,18 @@ pipeline{
                 sh 'mvn clean deploy'
             }
         } 
-//        stage("Sonar Analysis") {
-//            environment {
-//               scannerHome = tool 'MySonarScanner'
-//            }
-//            steps {
-//                echo '<--------------- Sonar Analysis started  --------------->'
-//                withSonarQubeEnv('MySonarQubeServer') {    
-//                   sh "${scannerHome}/bin/sonar-scanner"
-//                echo '<--------------- Sonar Analysis ends --------------->'    
-//                }    
-//            }   
-//        }
+        stage("Sonar Analysis") {
+              environment {
+                 scannerHome = tool 'MySonarScanner'
+              }
+              steps {
+                  echo '<--------------- Sonar Analysis started  --------------->'
+                  withSonarQubeEnv('MySonarQubeServer') {    
+                     sh "${scannerHome}/bin/sonar-scanner"
+                  echo '<--------------- Sonar Analysis ends --------------->'    
+                  }    
+              }   
+        }
 //        stage('Quality Gate'){
 //            steps{
 //                echo '<----------------Quality Gate------------------------->'
