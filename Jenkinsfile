@@ -37,20 +37,19 @@ pipeline{
                   }    
               }   
         }
-//        stage('Quality Gate'){
-//            steps{
-//                echo '<----------------Quality Gate------------------------->'
-//                script{
-//                    timeout (time: 1, unit: 'HOURS'){
-//                        def qg = waitForQualityGate()   
-//                        if(qg.status !='OK'){   
-//                           error "Pipeline failed due to quality gate failures: ${qg.status}"  
-//                        }
-//                    }
-//                }
-//            }
-//       
-//        }
+        stage('Quality Gate'){
+             steps{
+                 echo '<----------------Quality Gate------------------------->'
+                 script{
+                     timeout (time: 1, unit: 'HOURS'){
+                        def qg = waitForQualityGate()   
+                        if(qg.status !='OK'){   
+                           error "Pipeline failed due to quality gate failures: ${qg.status}"  
+                        }
+                     }
+                 }
+             }       
+        }
 //        stage('jfrog deploy'){
 //            steps{
 //                 script {
