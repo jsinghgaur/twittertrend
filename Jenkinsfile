@@ -5,7 +5,7 @@ def version   = '2.0.2'
 pipeline{
     agent {
         node {
-            label "java-build-server"
+            label "java-agent"
         }
     }
     options {
